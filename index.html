@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Recipes</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Recipes</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="hero">
+            <h1>Welcome to Dezia's Recipes</h1>
+            <p>Explore delicious recipes for all occasions.</p>
+        </section>
+
+        <section id="featured-recipes">
+            <h2>Featured Recipes</h2>
+
+            <!-- Fried Chicken Recipe -->
+            <div class="recipe-card">
+                <img src="fried-chicken.jpg" alt="Fried Chicken">
+                <h3>Fried Chicken</h3>
+                <p>Enjoy crispy, golden, and flavorful fried chicken made with a blend of spices.</p>
+                <button onclick="viewRecipe('Fried Chicken')">View Recipe</button>
+            </div>
+
+            <!-- Banana Bread Recipe -->
+            <div class="recipe-card">
+                <img src="bananabread.jpg" alt="Banana Bread">
+                <h3>Banana Bread</h3>
+                <p>A moist and sweet banana bread, perfect for breakfast or a snack.</p>
+                <button onclick="viewRecipe('Banana Bread')">View Recipe</button>
+            </div>
+
+            <!-- Pizza Recipe -->
+            <div class="recipe-card">
+                <img src="pizza.jpg" alt="Pizza">
+                <h3>Pizza</h3>
+                <p>A delicious homemade pizza with a crispy crust, topped with fresh ingredients.</p>
+                <button onclick="viewRecipe('Pizza')">View Recipe</button>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Food Recipes. All rights reserved.</p>
+    </footer>
+
+    <script src="scripts.js"></script>
+</body>
+</html>
