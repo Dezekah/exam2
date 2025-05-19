@@ -1,4 +1,4 @@
-// recipe.js
+// recipe.jsx
 const recipes = {
   "Fried Chicken": {
     title: "Fried Chicken",
