@@ -73,7 +73,7 @@ export default function Home() {
         "4. Bake for 12-15 minutes until crust is golden.";
     }
 
-    alert(recipeDetails);
+    window.alert(recipeDetails); // Use window.alert to be explicit
   }
 
   return (
@@ -98,6 +98,7 @@ export default function Home() {
               <h3 className="text-xl font-bold mb-1 flex items-center justify-between">
                 Fried Chicken
                 <button
+                  type="button"
                   className="ml-4 px-3 py-1 text-sm bg-orange-100 rounded hover:bg-orange-200 transition"
                   onClick={() => viewRecipe('Fried Chicken')}
                 >
@@ -113,6 +114,7 @@ export default function Home() {
               <h3 className="text-xl font-bold mb-1 flex items-center justify-between">
                 Banana Bread
                 <button
+                  type="button"
                   className="ml-4 px-3 py-1 text-sm bg-orange-100 rounded hover:bg-orange-200 transition"
                   onClick={() => viewRecipe('Banana Bread')}
                 >
@@ -128,6 +130,7 @@ export default function Home() {
               <h3 className="text-xl font-bold mb-1 flex items-center justify-between">
                 Pizza
                 <button
+                  type="button"
                   className="ml-4 px-3 py-1 text-sm bg-orange-100 rounded hover:bg-orange-200 transition"
                   onClick={() => viewRecipe('Pizza')}
                 >
