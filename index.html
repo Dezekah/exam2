@@ -1,17 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-const root = createRoot(document.getElementById("root"));
-root.render(<App />);
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Food Recipes</title>
     <link rel="stylesheet" href="styles.css">
 </head>
-<body>
-  <div id="root"></div>
-  <script type="module" src="script.jsx"></script>
-</body>
 <body>
     <header>
         <nav>
@@ -37,7 +32,7 @@ root.render(<App />);
                 <img src="fried-chicken.jpg" alt="Fried Chicken">
                 <h3>Fried Chicken</h3>
                 <p>Enjoy crispy, golden, and flavorful fried chicken made with a blend of spices.</p>
-                <button onclick="viewRecipe('Fried Chicken')">View Recipe</button>
+                <button onclick="location.href='recipe.html?name=Fried%20Chicken'">View Recipe</button>
             </div>
 
             <!-- Banana Bread Recipe -->
@@ -45,7 +40,7 @@ root.render(<App />);
                 <img src="bananabread.jpg" alt="Banana Bread">
                 <h3>Banana Bread</h3>
                 <p>A moist and sweet banana bread, perfect for breakfast or a snack.</p>
-                <button onclick="viewRecipe('Banana Bread')">View Recipe</button>
+                <button onclick="location.href='recipe.html?name=Banana%20Bread'">View Recipe</button>
             </div>
 
             <!-- Pizza Recipe -->
@@ -53,7 +48,7 @@ root.render(<App />);
                 <img src="pizza.jpg" alt="Pizza">
                 <h3>Pizza</h3>
                 <p>A delicious homemade pizza with a crispy crust, topped with fresh ingredients.</p>
-                <button onclick="viewRecipe('Pizza')">View Recipe</button>
+                <button onclick="location.href='recipe.html?name=Pizza'">View Recipe</button>
             </div>
         </section>
     </main>
