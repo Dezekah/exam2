@@ -19,66 +19,83 @@ export default function Home() {
 
     alert(recipeDetails);
   }}
+import { useRef, useState } from "react";
+
+const recipes = [
+  {
+    name: "Fried Chicken",
+    description: "Enjoy crispy, golden, and flavorful fried chicken made with a blend of spices.",
+    ingredients: [
+      "Chicken pieces",
+      "2 cups buttermilk",
+      "2 cups flour",
+      "1 tbsp paprika",
+      "1 tsp garlic powder",
+      "Salt & pepper",
+      "Oil for frying"
+    ],
+    steps: [
+      "Marinate chicken in buttermilk for 2 hours.",
+      "Mix flour, paprika, garlic powder, salt, and pepper.",
+      "Coat chicken in flour mixture.",
+      "Fry in hot oil until golden and cooked through.",
+      "Drain on paper towels and serve."
+    ]
+  },
+  {
+    name: "Banana Bread",
+    description: "A moist and sweet banana bread, perfect for breakfast or a snack.",
+    ingredients: [
+      "3 ripe bananas",
+      "1/2 cup melted butter",
+      "1 cup sugar",
+      "2 eggs",
+      "1.5 cups flour",
+      "1 tsp baking soda",
+      "Pinch of salt"
+    ],
+    steps: [
+      "Preheat oven to 350°F (175°C).",
+      "Mash bananas and mix with melted butter.",
+      "Add sugar and eggs, mix well.",
+      "Stir in flour, baking soda, and salt.",
+      "Pour into loaf pan and bake for 50-60 minutes."
+    ]
+  },
+  {
+    name: "Pizza",
+    description: "A delicious homemade pizza with a crispy crust, topped with fresh ingredients.",
+    ingredients: [
+      "Pizza dough",
+      "1/2 cup tomato sauce",
+      "1 cup mozzarella cheese",
+      "Toppings of choice (pepperoni, veggies, etc.)"
+    ],
+    steps: [
+      "Preheat oven to 475°F (245°C).",
+      "Roll out dough and place on baking sheet.",
+      "Spread sauce, add cheese and toppings.",
+      "Bake for 12-15 minutes until crust is golden."
+    ]
+  }
+];
 
 export default function Home() {
-  function viewRecipe(recipeName) {
-    let recipeDetails = "";
+  const [selectedRecipe, setSelectedRecipe] = useState(null);
+  const detailsRef = useRef(null);
 
-    if (recipeName === 'Fried Chicken') {
-      recipeDetails =
-        "Fried Chicken Recipe\n\n" +
-        "Ingredients:\n" +
-        "- Chicken pieces\n" +
-        "- 2 cups buttermilk\n" +
-        "- 2 cups flour\n" +
-        "- 1 tbsp paprika\n" +
-        "- 1 tsp garlic powder\n" +
-        "- Salt & pepper\n" +
-        "- Oil for frying\n\n" +
-        "Steps:\n" +
-        "1. Marinate chicken in buttermilk for 2 hours.\n" +
-        "2. Mix flour, paprika, garlic powder, salt, and pepper.\n" +
-        "3. Coat chicken in flour mixture.\n" +
-        "4. Fry in hot oil until golden and cooked through.\n" +
-        "5. Drain on paper towels and serve.";
-    } else if (recipeName === 'Banana Bread') {
-      recipeDetails =
-        "Banana Bread Recipe\n\n" +
-        "Ingredients:\n" +
-        "- 3 ripe bananas\n" +
-        "- 1/2 cup melted butter\n" +
-        "- 1 cup sugar\n" +
-        "- 2 eggs\n" +
-        "- 1.5 cups flour\n" +
-        "- 1 tsp baking soda\n" +
-        "- Pinch of salt\n\n" +
-        "Steps:\n" +
-        "1. Preheat oven to 350°F (175°C).\n" +
-        "2. Mash bananas and mix with melted butter.\n" +
-        "3. Add sugar and eggs, mix well.\n" +
-        "4. Stir in flour, baking soda, and salt.\n" +
-        "5. Pour into loaf pan and bake for 50-60 minutes.";
-    } else if (recipeName === 'Pizza') {
-      recipeDetails =
-        "Pizza Recipe\n\n" +
-        "Ingredients:\n" +
-        "- Pizza dough\n" +
-        "- 1/2 cup tomato sauce\n" +
-        "- 1 cup mozzarella cheese\n" +
-        "- Toppings of choice (pepperoni, veggies, etc.)\n\n" +
-        "Steps:\n" +
-        "1. Preheat oven to 475°F (245°C).\n" +
-        "2. Roll out dough and place on baking sheet.\n" +
-        "3. Spread sauce, add cheese and toppings.\n" +
-        "4. Bake for 12-15 minutes until crust is golden.";
-    }
-
-    window.alert(recipeDetails); // Use window.alert to be explicit
+  function handleViewRecipe(recipeName) {
+    setSelectedRecipe(recipeName);
+    setTimeout(() => {
+      detailsRef.current?.scrollIntoView({ behavior: "smooth" });
+    }, 100); // slight delay to ensure state updates before scrolling
   }
 
+  const recipe = recipes.find(r => r.name === selectedRecipe);
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-orange-50 font-sans">
-      <main className="bg-white rounded-xl shadow-lg p-8 max-w-xl w-full">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-orange-50 font-sans">
+      <main className="bg-white rounded-xl shadow-lg p-8 max-w-xl w-full mb-8">
         <div className="bg-pink-100 rounded-lg px-6 py-4 mb-6">
           <h1 className="text-3xl font-bold mb-2 text-center">
             Final Exam 343 <span role="img" aria-label="sparkles">✨</span>
@@ -93,57 +110,51 @@ export default function Home() {
         <section>
           <h2 className="text-2xl font-semibold mb-4">Featured Recipes</h2>
           <div className="space-y-6">
-            {/* Fried Chicken */}
-            <div className="border-b pb-4">
-              <h3 className="text-xl font-bold mb-1 flex items-center justify-between">
-                Fried Chicken
-                <button
-                  type="button"
-                  className="ml-4 px-3 py-1 text-sm bg-orange-100 rounded hover:bg-orange-200 transition"
-                  onClick={() => viewRecipe('Fried Chicken')}
-                >
-                  View Recipe
-                </button>
-              </h3>
-              <p className="text-gray-700 mb-2">
-                Enjoy crispy, golden, and flavorful fried chicken made with a blend of spices.
-              </p>
-            </div>
-            {/* Banana Bread */}
-            <div className="border-b pb-4">
-              <h3 className="text-xl font-bold mb-1 flex items-center justify-between">
-                Banana Bread
-                <button
-                  type="button"
-                  className="ml-4 px-3 py-1 text-sm bg-orange-100 rounded hover:bg-orange-200 transition"
-                  onClick={() => viewRecipe('Banana Bread')}
-                >
-                  View Recipe
-                </button>
-              </h3>
-              <p className="text-gray-700 mb-2">
-                A moist and sweet banana bread, perfect for breakfast or a snack.
-              </p>
-            </div>
-            {/* Pizza */}
-            <div>
-              <h3 className="text-xl font-bold mb-1 flex items-center justify-between">
-                Pizza
-                <button
-                  type="button"
-                  className="ml-4 px-3 py-1 text-sm bg-orange-100 rounded hover:bg-orange-200 transition"
-                  onClick={() => viewRecipe('Pizza')}
-                >
-                  View Recipe
-                </button>
-              </h3>
-              <p className="text-gray-700 mb-2">
-                A delicious homemade pizza with a crispy crust, topped with fresh ingredients.
-              </p>
-            </div>
+            {recipes.map((r) => (
+              <div key={r.name} className="border-b pb-4">
+                <h3 className="text-xl font-bold mb-1 flex items-center justify-between">
+                  {r.name}
+                  <button
+                    type="button"
+                    className="ml-4 px-3 py-1 text-sm bg-orange-100 rounded hover:bg-orange-200 transition cursor-pointer"
+                    onClick={() => handleViewRecipe(r.name)}
+                  >
+                    View Recipe
+                  </button>
+                </h3>
+                <p className="text-gray-700 mb-2">{r.description}</p>
+              </div>
+            ))}
           </div>
         </section>
       </main>
+
+      {/* Recipe Details Section */}
+      <section ref={detailsRef} className="bg-white rounded-xl shadow-lg p-8 max-w-xl w-full">
+        {recipe ? (
+          <>
+            <h2 className="text-2xl font-bold mb-2 text-center">{recipe.name} Recipe</h2>
+            <div className="mb-4">
+              <h3 className="text-xl font-semibold mb-2">Ingredients</h3>
+              <ul className="list-disc list-inside ml-4 text-gray-800">
+                {recipe.ingredients.map((item, i) => (
+                  <li key={i}>{item}</li>
+                ))}
+              </ul>
+            </div>
+            <div>
+              <h3 className="text-xl font-semibold mb-2">Steps</h3>
+              <ol className="list-decimal list-inside ml-4 text-gray-800">
+                {recipe.steps.map((step, i) => (
+                  <li key={i}>{step}</li>
+                ))}
+              </ol>
+            </div>
+          </>
+        ) : (
+          <h2 className="text-xl text-gray-400 text-center">Select a recipe above to view details.</h2>
+        )}
+      </section>
     </div>
   );
 }
